@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-asphalt text-chalk font-body antialiased;
+  }
+  ::selection {
+    @apply bg-signal-amber text-asphalt;
+  }
+  *:focus-visible {
+    outline: 2px solid theme("colors.signal.amber");
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .hazard-stripe {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      theme("colors.signal.amber"),
+      theme("colors.signal.amber") 10px,
+      theme("colors.asphalt.DEFAULT") 10px,
+      theme("colors.asphalt.DEFAULT") 20px
+    );
+  }
+}
+
+.leaflet-container {
+  background: #1b1d1f !important;
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
